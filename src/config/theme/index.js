@@ -1,12 +1,12 @@
 // COLORS
-export const primaryColor = "#7d67f0"
+export const primaryColor = "#f3ce13"
 
 export const lightColor = "rgba(243, 60, 82, 0.04)"
 export const grayColor = "#464646"
 export const blackColor = "#090810"
 export const whiteColor = "#ffffff"
 
-export const nvcBrandColor1 = "#EC1C25"
+export const nvcBrandColor1 = "#f3ce13"
 
 // SIZES
 export const baseSize = 4
