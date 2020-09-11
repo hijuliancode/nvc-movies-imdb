@@ -53,6 +53,14 @@ export const font = {
     '700': 700,
     '800': 800,
     '900': 900,
+  },
+  literature: {
+    name: "'Alegreya', serif",
+    weight: {
+      '400' : 400,
+      '500' : 500,
+      '700' : 700,
+    }
   }
 }
 
