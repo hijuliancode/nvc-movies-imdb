@@ -7,11 +7,14 @@ import {
   StarOutlined,
 } from '@ant-design/icons';
 
+import API_IMDB from '../../services/imdb.service'
+
 // Components
 const { Meta } = Card
 
 // Styles
 const MovieElm = styled(Card)`
+  margin-bottom: 32px;
   padding: 0;
   position: relative;
   transition: all 0.3s ease-in-out;
@@ -66,23 +69,32 @@ const Cast = styled.div`
 `
 
 
-const MovieComponent = () => (
-  <MovieElm
-    hoverable
-    size="small"
-    cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-    >
-    <Meta title="Europe Street beat" />
-    <MovieContent className="movie-content">
-      <Rating>
-        <StarOutlined />
-        <strong className="rating-text">9.8</strong>
-      </Rating>
-      <Cast>
-        <strong>Cast:</strong> Meraki SC, Ginna Mora, Carlos Sosa, Julian Sosa
-      </Cast>
-    </MovieContent>
-  </MovieElm>
-)
+const MovieComponent = ({movie}) => {
+  const {vote_average, title, poster_path} = movie
+  const getMovie = async (movie_id) => {
+    const data = await API_IMDB.getMovie(movie_id)
+      .then(_resp => _resp)
+      .catch(error => console.error('Error => ', error))
+    return data
+  }
+  return (
+    <MovieElm
+      hoverable
+      size="small"
+      cover={<img alt="example" src={`https://image.tmdb.org/t/p/w220_and_h330_face/${poster_path}`} />}
+      >
+      <Meta title={title} />
+      <MovieContent className="movie-content">
+        <Rating>
+          <StarOutlined />
+          <strong className="rating-text">{vote_average}</strong>
+        </Rating>
+        <Cast>
+          <strong>Cast:</strong> Meraki SC, Ginna Mora, Carlos Sosa, Julian Sosa
+        </Cast>
+      </MovieContent>
+    </MovieElm>
+  )
+}
 
 export default MovieComponent
