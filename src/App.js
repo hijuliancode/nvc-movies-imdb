@@ -8,6 +8,7 @@ import {
 } from '@ant-design/icons'
 
 // Components
+import HomeComponent from './components/Home'
 
 // Styled Elements
 const Alerts = styled.div`
@@ -80,7 +81,12 @@ const App = () => {
   return (
     <Wrapper>
       <Container>
-        App.js
+        <Router>
+          <Switch>
+            <Route exact path="/" component={() => <HomeComponent />} />
+            <Route exact path="/movies/:id" />
+          </Switch>
+        </Router>
       </Container>
       <Alerts/>
       <ScreenIcons onClick={() => toggleFullScreen()}>
